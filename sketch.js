@@ -156,7 +156,7 @@ function draw() {
 
   background(bgColor);
 
-  let volumen = mic.getLevel();
+  let volumen = mic.getLevel()*0.08;
   peso = map(volumen, 0, 0.05, 0, 200);
   peso = constrain(peso, 0, 100);
 
