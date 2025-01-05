@@ -37,6 +37,7 @@ function setup() {
   createCanvas(windowWidth, windowHeight);
   font = fonts.original; // Fuente por defecto
 
+  
   textFont(font);
 
   // Colores iniciales
@@ -52,7 +53,7 @@ function setup() {
   capaColor = fontColor;
 
   // Botón para pantalla completa
-  const fullscreenButton = createButton('Pantalla Completa');
+  const fullscreenButton = createButton('Full ');
   fullscreenButton.position(10, 10);
   fullscreenButton.mousePressed(() => {
     let fs = fullscreen();
@@ -156,7 +157,7 @@ function draw() {
 
   background(bgColor);
 
-  let volumen = mic.getLevel()*0.08;
+  let volumen = mic.getLevel()*1; // cambiar el 1 segun el sonido que haya (esd mercadillo navideño 0.08)
   peso = map(volumen, 0, 0.05, 0, 200);
   peso = constrain(peso, 0, 100);
 
@@ -251,4 +252,7 @@ function dibujarCapa(puntos, xOffset, yOffset, factor, capa, semillaExtra) {
 
 function getDeformacionFactor(capa) {
   return map(capa, 0, numCapas - 1, peso * 0.5, peso * 2.0);
+}
+function windowResized() {
+  resizeCanvas(windowWidth, windowHeight);
 }
